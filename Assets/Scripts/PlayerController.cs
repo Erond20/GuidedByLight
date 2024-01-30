@@ -1,11 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    private CharacterController controller;
+    private Rigidbody2D rb;
 
     public float moveSpeed = 10f;
     Vector2 Move;
@@ -13,15 +14,19 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        //Reference for Character Controller
-        controller = GetComponent<CharacterController>();
+        //Reference for Rigidbody 2D
+        rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
         //Input For Movement
         Move.x = Input.GetAxisRaw("Horizontal");
         Move.y = Input.GetAxisRaw("Vertical");
-        //Normalized Movement So It Couldnt Go Faster Diagonally 
-        controller.Move(Move.normalized * moveSpeed * Time.deltaTime);
+        //Apply Movement
+        Move.Normalize();
+    }
+    private void FixedUpdate()
+    {
+        rb.velocity = Move * moveSpeed;
     }
 }
