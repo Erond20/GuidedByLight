@@ -15,6 +15,5 @@ public class PlayerAim : MonoBehaviour
         aimDirection = aimDirection.normalized;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         transform.rotation = Quaternion.Euler(0,0,aimAngle);
-        crossHair.transform.position = Input.mousePosition;
     }
 }
