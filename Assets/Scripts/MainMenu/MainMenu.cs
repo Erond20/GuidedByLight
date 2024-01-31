@@ -4,8 +4,9 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     public static bool isPaused;
-    public float duration;
+    [SerializeField] float duration;
     public GameObject menuBar;
+    [SerializeField] LeanTweenType easeType;
     private void Start()
     {
         Time.timeScale = 0;
@@ -30,11 +31,15 @@ public class MainMenu : MonoBehaviour
     }
     public void Hide()
     {
-        LeanTween.moveLocalY(menuBar, 1000, duration).setIgnoreTimeScale(true); 
+        LeanTween.moveLocalY(menuBar, 1000, duration).setIgnoreTimeScale(true).setEase(easeType); 
     }
     public void Show()
     {
-        LeanTween.moveLocalY(menuBar, 0, duration).setIgnoreTimeScale(true);
+        LeanTween.moveLocalY(menuBar, 100, duration).setIgnoreTimeScale(true).setEase(easeType);
+    }
+    public void ScaleUp()
+    {
+        LeanTween.scale(menuBar,transform.localScale*2, duration);
     }
     void Resume() { Time.timeScale = 1;}
     void Pause(){Time.timeScale = 0; }
