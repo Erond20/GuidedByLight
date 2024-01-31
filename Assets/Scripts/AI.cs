@@ -5,23 +5,20 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 using System.IO;
+using Pathfinding;
 
 public class AI : MonoBehaviour
 {
 
-    public GameObject target;
-
-    NavMeshAgent agent;
+    public Transform Target;
 
 
     private void Start()
     {
-        
-        agent = GetComponent<NavMeshAgent>();
     }
     private void Update()
     {
-        agent.SetDestination(target.transform.position);
+        AIDestinationSetter.istance.target.transform.position = Target.position;   
     }
 
 }
