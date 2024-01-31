@@ -6641,6 +6641,12 @@ Transform:
   - {fileID: 971518758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1189397431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969973884559285920, guid: b2a3552c7e401c240b1a808fb8ef37f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1537372622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1303592689
 GameObject:
   m_ObjectHideFlags: 0
@@ -6901,11 +6907,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7114246168776873198, guid: b2a3552c7e401c240b1a808fb8ef37f9,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2384479923230053315, guid: b2a3552c7e401c240b1a808fb8ef37f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6960,11 +6961,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DarknessEnemy (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8517917970617461811, guid: b2a3552c7e401c240b1a808fb8ef37f9,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7249,7 +7245,7 @@ MonoBehaviour:
   - {fileID: 1599255777}
   - {fileID: 1998561891}
   RandomPick: {fileID: 0}
-  Enemy: {fileID: 0}
+  Enemy: {fileID: 1189397431}
   RandomPickIsSelected: 0
   EnemySpawned: 0
 --- !u!4 &1826208899
