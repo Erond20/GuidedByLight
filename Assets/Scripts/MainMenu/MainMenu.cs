@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] float duration;
     public GameObject menuBar;
     [SerializeField] LeanTweenType easeType;
+    
     private void Start()
     {
         Time.timeScale = 0;
