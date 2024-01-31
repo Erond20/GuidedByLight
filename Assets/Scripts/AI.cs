@@ -9,7 +9,7 @@ using Pathfinding;
 
 public class AI : MonoBehaviour
 {
-    public Transform player;
+    public GameObject player;
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -21,13 +21,13 @@ public class AI : MonoBehaviour
     }
     private void Update()
     {
-      
     }
     private void FixedUpdate()
     {
-        Vector3 dir = player.position - transform.position;
+        player = GameObject.Find("Player");
+        Vector3 dir = player.transform.position - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+       // rb.rotation = angle;
         dir.Normalize();
         movement = dir;
         MoveCharacter(movement);
