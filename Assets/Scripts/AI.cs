@@ -9,17 +9,31 @@ using Pathfinding;
 
 public class AI : MonoBehaviour
 {
-
-    public GameObject Target;
-
+    public Transform player;
+    public float moveSpeed = 5f;
+    private Rigidbody2D rb;
+    private Vector2 movement;
 
     private void Start()
     {
-        Target = GameObject.Find("Player");
+         rb = GetComponent<Rigidbody2D>();
+
     }
     private void Update()
     {
-        AIDestinationSetter.istance.target.transform.position = Target.transform.position;   
+      
     }
-
+    private void FixedUpdate()
+    {
+        Vector3 dir = player.position - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        rb.rotation = angle;
+        dir.Normalize();
+        movement = dir;
+        MoveCharacter(movement);
+    }
+    void MoveCharacter(Vector2 direction)
+    {
+        rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.fixedDeltaTime));
+    }
 }
