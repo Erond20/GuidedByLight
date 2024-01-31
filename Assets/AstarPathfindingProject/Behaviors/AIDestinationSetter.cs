@@ -17,7 +17,7 @@ namespace Pathfinding {
 		/// <summary>The object that the AI should move to</summary>
 		public Transform target;
 		IAstarAI ai;
-		public static AIDestinationSetter istance;
+
 		void OnEnable () {
 			ai = GetComponent<IAstarAI>();
 			// Update the destination right before searching for a path as well.
@@ -25,22 +25,25 @@ namespace Pathfinding {
 			// frame as the destination is used for debugging and may be used for other things by other
 			// scripts as well. So it makes sense that it is up to date every frame.
 			if (ai != null) ai.onSearchPath += Update;
-
 		}
-        private void Start()
-        {
-			istance = this;
-        }
 
-        void OnDisable () {
+		void OnDisable () {
 			if (ai != null) ai.onSearchPath -= Update;
 		}
 
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
+			if(target == null)
+			{
+			target = transform.Find("Player");
 
+<<<<<<< HEAD
 			ai.destination = target.position;
             if (target != null && ai != null) ai.destination = target.position;
+=======
+			}
+			if (target != null && ai != null) ai.destination = target.position;
+>>>>>>> parent of 138de47 (EnemyMovementIsDone)
 		}
 	}
 }
