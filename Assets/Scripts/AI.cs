@@ -10,15 +10,16 @@ using Pathfinding;
 public class AI : MonoBehaviour
 {
 
-    public Transform Target;
+    public GameObject Target;
 
 
     private void Start()
     {
+        Target = GameObject.Find("Player");
     }
     private void Update()
     {
-        AIDestinationSetter.istance.target.transform.position = Target.position;   
+        AIDestinationSetter.istance.target.transform.position = Target.transform.position;   
     }
 
 }
