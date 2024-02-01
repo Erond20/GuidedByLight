@@ -2,13 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using Unity.VisualScripting;
+
 public class MainMenu : MonoBehaviour
 {
     public static bool isPaused;
     [SerializeField] float duration;
     public GameObject menuBar;
     [SerializeField] LeanTweenType easeType;
-    
+
+    public TMP_Text enemiesKilled_Text,points_Text,Time_Text;
+    GameObject bullet;
+    private void Awake()
+    {
+       bullet = GameObject.FindGameObjectWithTag("Bullet");
+    }
     private void Start()
     {
         Time.timeScale = 0;
@@ -30,6 +39,8 @@ public class MainMenu : MonoBehaviour
                 Hide();
             }
         }
+
+        enemiesKilled_Text.text = "Enemies Killed: " + bullet.GetComponent<Bullet>().enemyCount;
     }
     public void Hide()
     {
@@ -51,10 +62,6 @@ public class MainMenu : MonoBehaviour
         isPaused = false;
         LeanTween.moveLocalY(menuBar, 1000, duration).setIgnoreTimeScale(true);
         Time.timeScale = 1;
-    }
-    public void OpenOptions()
-    {
-
     }
     public void Restart()
     {
